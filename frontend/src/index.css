@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-gray-950 text-gray-100 min-h-screen;
+        font-family: "Inter", system-ui, sans-serif;
+    }
+}
+
+@layer components {
+    .card {
+        @apply bg-gray-900/80 border border-gray-800/60 rounded-2xl p-6 shadow-xl shadow-black/10 backdrop-blur-sm transition-all duration-300;
+    }
+
+    .card:hover {
+        @apply border-gray-700/60 shadow-2xl shadow-black/20;
+    }
+
+    .card-header {
+        @apply text-[11px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-1;
+    }
+
+    .card-value {
+        @apply text-3xl font-extrabold text-white tabular-nums tracking-tight;
+    }
+
+    .badge {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wide;
+    }
+
+    .badge-pending {
+        @apply bg-yellow-500/10 text-yellow-400 ring-1 ring-inset ring-yellow-500/20;
+    }
+
+    .badge-processing {
+        @apply bg-blue-500/10 text-blue-400 ring-1 ring-inset ring-blue-500/20;
+    }
+
+    .badge-completed {
+        @apply bg-emerald-500/10 text-emerald-400 ring-1 ring-inset ring-emerald-500/20;
+    }
+
+    .badge-failed {
+        @apply bg-red-500/10 text-red-400 ring-1 ring-inset ring-red-500/20;
+    }
+
+    .btn-primary {
+        @apply bg-brand-600 hover:bg-brand-500 active:bg-brand-700 text-white font-bold px-5 py-3 rounded-xl transition-all duration-200 ease-out focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-brand-600 shadow-lg shadow-brand-600/25 hover:shadow-brand-500/30 hover:-translate-y-0.5 active:translate-y-0 active:shadow-md;
+    }
+
+    .input {
+        @apply w-full bg-gray-800/80 border border-gray-700/60 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-500 transition-all duration-200 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:bg-gray-800;
+    }
+
+    .select {
+        @apply w-full bg-gray-800/80 border border-gray-700/60 rounded-xl px-4 py-3 text-white text-sm appearance-none cursor-pointer transition-all duration-200 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:bg-gray-800;
+    }
+
+    .table-header {
+        @apply text-[10px] font-bold uppercase tracking-[0.15em] text-gray-500 text-left;
+    }
+
+    .table-cell {
+        @apply py-3.5 px-4 text-sm text-gray-300 border-b border-gray-800/40;
+    }
+
+    .fade-in {
+        animation: fadeIn 0.4s ease-out;
+    }
+
+    .slide-up {
+        animation: slideUp 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .pulse-dot {
+        @apply relative flex h-2 w-2;
+    }
+
+    .pulse-dot::before {
+        @apply absolute inline-flex h-full w-full rounded-full opacity-75 content-[''];
+        animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .pulse-dot::after {
+        @apply relative inline-flex h-2 w-2 rounded-full content-[''];
+    }
+
+    .pulse-dot-processing::before {
+        @apply bg-blue-400;
+    }
+
+    .pulse-dot-processing::after {
+        @apply bg-blue-500;
+    }
+
+    @keyframes ping {
+
+        75%,
+        100% {
+            transform: scale(2.5);
+            opacity: 0;
+        }
+    }
+
+    .toast {
+        animation: toastIn 0.4s ease-out;
+    }
+
+    @keyframes toastIn {
+        from {
+            opacity: 0;
+            transform: translateY(-12px) scale(0.95);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .toast-exit {
+        animation: toastOut 0.3s ease-in forwards;
+    }
+
+    @keyframes toastOut {
+        to {
+            opacity: 0;
+            transform: translateY(-12px) scale(0.95);
+        }
+    }
+
+    .shimmer {
+        @apply relative overflow-hidden;
+    }
+
+    .shimmer::after {
+        @apply absolute inset-0 content-[''];
+        background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.03) 50%,
+                transparent 100%);
+        animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(100%);
+        }
+    }
+}

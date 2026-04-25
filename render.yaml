@@ -57,3 +57,4 @@ services:
     name: playto-redis
     plan: free
     maxmemoryPolicy: noeviction
+    ipAllowList: [] 
